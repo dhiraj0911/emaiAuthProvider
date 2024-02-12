@@ -1,8 +1,7 @@
 # service2/Dockerfile
 FROM node:20
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
 COPY . .
-EXPOSE 4000
+RUN npm install
 CMD ["node", "main.js"]
+EXPOSE 4000
