@@ -32,9 +32,9 @@ const sendotp = async (req, res) => {
 
     // Send the OTP via email
     sendOtpEmail(email, otp).then(() => {
-        res.send({ message: 'OTP sent successfully' });
+        res.send({ message: 'Verification code sent successfully' });
     }).catch(error => {
-        res.status(500).send({ message: 'Failed to send OTP', error: error.message });
+        res.status(500).send({ message: 'Failed to send Verification code', error: error.message });
     });
 };
 
@@ -42,12 +42,12 @@ const verifyotp = (req, res) => {
     const { email, otp } = req.body;
     const record = otpStore[email];
     if (!record || record.otp !== otp || Date.now() > record.expires) {
-        return res.status(400).send({ message: 'Invalid or expired OTP' });
+        return res.status(400).send({ message: 'Invalid or expired Verification code' });
     }
 
     // OTP is valid
     delete otpStore[email]; // Remove OTP from store
-    res.send({ message: 'OTP verified successfully' });
+    res.send({ message: 'Verification code verified successfully' });
 };
 
 setInterval(cleanExpiredOtps, 60000);

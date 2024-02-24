@@ -10,10 +10,10 @@ let transporter = nodemailer.createTransport({
 
 async function sendOtpEmail(email, otp) {
     await transporter.sendMail({
-        from: '"Cojag" fakeauth1100@gmail.com',
+        from: '"Cojag"',
         to: email,
-        subject: "Otp Verification",
-        text: `Your OTP is: ${otp}`,
+        subject: "Verification code",
+        text: `Your verification code is: ${otp}`,
     });
 }
 
