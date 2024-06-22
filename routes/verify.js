@@ -5,7 +5,6 @@ const {
 } = require('../handler/otp')
 const router = express.Router();
 
-
 router.post('/sendotp', sendotp);
 router.post('/verifyotp', verifyotp);
 
